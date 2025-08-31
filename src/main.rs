@@ -1,23 +1,21 @@
-static X: i32 = 1;
+// Unsigned 8-bit integer 255 gets incremented. Lets panic!
 
-static SQUARE: fn(i32) -> i32 = |x| x * x;
-static ADD: fn(i32, i32) -> i32 = |x, y| x + y;
-
-fn multiply(x: i32, y: i32) -> i32 {
-    x * y
+fn panic_u8_runtime() {
+    let x: u8 = 255;
+    x + 1;
 }
 
 fn main() {
-    let x = 1;
-    let mut y = 1;
-    println!("Hello, world!");
-    println!("The value of X is: {}", X);
-    println!("The value of y is: {}", y);
-    y = 2;
-    println!("The value of y is: {}", y);
-    y = SQUARE(y);
-    println!("The value of y is: {}", y);
-    y = ADD(y, 2);
-    println!("The value of y + 2 is: {}", y);
-    println!("The value of 3 * 2 is: {}", multiply(3, 2));
+    println!("This is a overflow test");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[should_panic(expected = "attempt to add with overflow")]
+    fn test_panic_u8_runtime() {
+        panic_u8_runtime();
+    }
 }
