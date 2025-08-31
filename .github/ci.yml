@@ -1,0 +1,31 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ main, babysteps ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Install Rust (via rustup)
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      # Build the project
+      - name: Build
+        run: cargo build --verbose
+
+      # Run the code (binary from src/main.rs)
+      - name: Run
+        run: cargo run --verbose
