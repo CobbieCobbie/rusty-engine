@@ -29,3 +29,7 @@ jobs:
       # Run the code (binary from src/main.rs)
       - name: Run
         run: cargo run --verbose
+
+      # Test the code
+      - name: Test
+        run: cargo test --verbose
