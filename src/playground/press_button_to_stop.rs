@@ -2,7 +2,7 @@ use std::io::{self, Read};
 use std::sync::mpsc;
 use std::thread;
 
-pub fn main() {
+pub fn press_button_to_stop() {
     // Create a channel to signal when user presses a key
     let (tx, rx) = mpsc::channel();
 

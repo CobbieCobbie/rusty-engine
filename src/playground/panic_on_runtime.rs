@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 pub fn panic_u8_runtime() {
     let x: u8 = 1;
     for i in 0..=255 {
